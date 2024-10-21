@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -21,10 +20,12 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [loading, setloading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const form = useForm({
     defaultValues: {
@@ -47,11 +48,11 @@ export default function Signup() {
       });
 
       const data = await res.json();
-      console.log(data);
       toast({
         variant: "default",
         title: data.message,
       });
+      navigate("/login", { replace: true });
     } catch (error) {
       toast.error({ variant: "default", title: error.message });
     } finally {
