@@ -1,7 +1,7 @@
 import useConversation from "@/zustand/useConversation";
 import { useSocketContext } from "@/context/SocketContext";
 
-const Conversation = ({ conversation }) => {
+const Conversation = ({ conversation, emoji }) => {
   const { selectConversation, setSelectConversation } = useConversation();
   const { onlineUsers } = useSocketContext();
   const isOnline = onlineUsers.includes(conversation._id);
@@ -26,7 +26,7 @@ const Conversation = ({ conversation }) => {
         <div className="flex flex-col flex-1">
           <div className="flex gap-3 justify-between">
             <p className="font-bold text-gray-200">{conversation.fullName} </p>
-            <span className="text-xl">🎃</span>
+            <span className="text-xl">{emoji}</span>
           </div>
         </div>
       </div>
