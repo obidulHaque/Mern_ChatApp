@@ -2,6 +2,7 @@ import React from "react";
 import Conversations from "./Conversations";
 import Logout from "@/auth/logOut";
 import useConversation from "@/zustand/useConversation";
+import SearchInput from "./SearchInput";
 
 export default function Sidebar() {
   const { selectConversation } = useConversation();
@@ -13,6 +14,7 @@ export default function Sidebar() {
         isShow ? "block" : "lg:block hidden"
       }`}
     >
+      <SearchInput />
       <Conversations />
       <div className="bottom-2 absolute right-2 ">
         <Logout />
