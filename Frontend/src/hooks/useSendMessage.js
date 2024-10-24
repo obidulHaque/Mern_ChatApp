@@ -17,7 +17,6 @@ export default function useSendMessage() {
       });
       const data = await res.json();
       setMessages([...messages, data]);
-      toast({ title: "Message Send" });
     } catch (error) {
       toast.error({ title: error.message });
     } finally {
